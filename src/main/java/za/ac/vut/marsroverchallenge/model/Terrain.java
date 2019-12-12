@@ -10,18 +10,31 @@ package za.ac.vut.marsroverchallenge.model;
  * @author 20180172
  */
 class Terrain {
-
-    Terrain(int horizontalBound, int verticalBound) throws IllegalHorizontalBoundValueException, IllegalVerticalBoundValueException {
+    //Terrain's surface area's/zone horizontal bounds
+    private int horizontalBound;
+    //Terrain's surface area/zone vertical bounds
+    private int verticalBound;
+    
+    public Terrain(int horizontalBound, int verticalBound) throws IllegalHorizontalBoundValueException, IllegalVerticalBoundValueException {
         //Check whether the horizontal bound is less than one
         if(horizontalBound < 1)
             throw new IllegalHorizontalBoundValueException();
         //Check whether the vertical bound is less than one
         if(verticalBound < 1)
             throw new IllegalVerticalBoundValueException();
+        
+        this.horizontalBound = horizontalBound;
+        this.verticalBound = verticalBound;
     }
 
-    boolean checkIfPointIsWithinSurfaceArea(int horizontalPosition, int verticalPosition) {
-        return false;
+    /**
+     * Checks whether a giver coordinate point is within the terrain's surface area
+     * @param int horizontalPosition
+     * @param int verticalPosition
+     * @return boolean
+     */
+    public boolean checkIfPointIsWithinSurfaceArea(int horizontalPosition, int verticalPosition) {
+        return (this.horizontalBound >= horizontalPosition && this.verticalBound >= verticalPosition);
     }
     
 }
