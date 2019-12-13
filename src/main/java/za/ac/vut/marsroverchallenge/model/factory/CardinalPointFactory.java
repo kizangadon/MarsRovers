@@ -5,6 +5,7 @@
  */
 package za.ac.vut.marsroverchallenge.model.factory;
 
+import za.ac.vut.marsroverchallenge.exception.model.IllegalCardinalPointValueException;
 import za.ac.vut.marsroverchallenge.model.Rover;
 
 /**
@@ -12,10 +13,10 @@ import za.ac.vut.marsroverchallenge.model.Rover;
  * @author 20180172
  */
 public class CardinalPointFactory {
-    public static Rover.CardinalPoint createFacingDirection(String facingDirection) {
+    public static Rover.CardinalPoint createCardinalPoint(String cardinalDirection) throws IllegalCardinalPointValueException {
         Rover.CardinalPoint cardinalPoint;
         
-        switch(facingDirection){
+        switch(cardinalDirection){
             case "E":
                 cardinalPoint = Rover.CardinalPoint.EAST;
                 break;
@@ -29,8 +30,7 @@ public class CardinalPointFactory {
                 cardinalPoint = Rover.CardinalPoint.SOUTH;
                 break;
             default:
-                cardinalPoint = null;
-                break;
+                throw new IllegalCardinalPointValueException();
         }
         
         return cardinalPoint;
