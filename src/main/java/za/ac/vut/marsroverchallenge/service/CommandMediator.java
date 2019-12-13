@@ -7,6 +7,8 @@ package za.ac.vut.marsroverchallenge.service;
 
 import za.ac.vut.marsroverchallenge.exception.model.RoverCannotMoveForwardException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import za.ac.vut.marsroverchallenge.exception.model.IllegalBoundValueException;
 import za.ac.vut.marsroverchallenge.exception.model.IllegalCommandValueException;
 import za.ac.vut.marsroverchallenge.exception.model.IllegalCoordinateValueException;
@@ -23,7 +25,7 @@ import za.ac.vut.marsroverchallenge.model.factory.CommandFactory;
  *
  * @author 20180172
  */
-public class CommandMediator {
+public class CommandMediator implements ICommandMediator {
 
     //The user's request
     private final Request request;
@@ -36,17 +38,17 @@ public class CommandMediator {
 
     public CommandMediator(Request request) throws IllegalCommandValueException, IllegalCoordinateValueException, IllegalBoundValueException {
         this.request = request;
-        
+
         createTerrain();
         createRover();
         createCommands();
     }
-    
-    private void createCommands() throws IllegalCommandValueException{
+
+    private void createCommands() throws IllegalCommandValueException {
         commands = CommandFactory.createCommands(request.getCommands());
     }
-    
-    private void createRover() throws IllegalCoordinateValueException{
+
+    private void createRover() throws IllegalCoordinateValueException {
         int horizontalCoordinate = request.getRoverHorizontalCoordinate();
         int verticalCoordinate = request.getRoverVerticalCoordinate();
 
@@ -74,46 +76,71 @@ public class CommandMediator {
 
         rover = new Rover(point, cardinalPoint);
     }
-    
-    private void createTerrain() throws IllegalBoundValueException{
+
+    private void createTerrain() throws IllegalBoundValueException {
         int horizontalBound = request.getTerrainHorizontalBound();
         int verticalBound = request.getTerrainVerticalBound();
 
         terrain = new Terrain(horizontalBound, verticalBound);
     }
 
+    @Override
     public Request getRequest() {
         return this.request;
     }
 
-    public Terrain getTerrain() {
-         return terrain;
-    }
-
-    public Rover getRover(){
+    @Override
+    public Rover getRover() {
         return rover;
     }
 
+    @Override
+    public Terrain getTerrain() {
+        return terrain;
+    }
+
+    @Override
     public List<Command> getCommands() {
         return commands;
     }
 
-    public void executeCommand(Command command) throws RoverCannotMoveForwardException, IllegalCoordinateValueException {
-        switch(command){
-            case MOVE_ONE_SPACE_FORWARD:
-        {
-            try {
-                rover.moveOneStepForward(terrain);
-            } catch (PointOutOfTerrainSurfaceAreaBoundsException e) {
-                throw new RoverCannotMoveForwardException();
-            }
+    private void moveOneStepForwardCommand() throws IllegalCoordinateValueException, RoverCannotMoveForwardException {
+        try {
+            rover.moveOneStepForward(terrain);
+        } catch (PointOutOfTerrainSurfaceAreaBoundsException e) {
+            throw new RoverCannotMoveForwardException();
         }
+    }
+
+    @Override
+    public void executeCommand(Command command) throws RoverCannotMoveForwardException, IllegalCoordinateValueException {
+        switch (command) {
+            case MOVE_ONE_SPACE_FORWARD: {
+                moveOneStepForwardCommand();
+            }
+            break;
+            case ROTATE_NINETY_DEGREES_LEFT:
+                rover.rotateNinetyDegreesLeft();
+                break;
+            case ROTATE_NINETY_DEGREES_RIGHT:
+                rover.rotateNinetyDegreesRight();
                 break;
         }
     }
 
+    @Override
+    public void executeCommands() {
+        for (Command command : commands) {
+            try {
+                executeCommand(command);
+            } catch (RoverCannotMoveForwardException | IllegalCoordinateValueException e) {
+
+            }
+        }
+    }
+
+    @Override
     public String getRoverLocationAndCardinalPoint() {
         return String.format("%d %d %s", rover.getCurrentHorizontalCoordinate(), rover.getCurrentVerticalCoordinate(), rover.getCardinalPoint());
     }
-
 }

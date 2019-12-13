@@ -168,7 +168,7 @@ public class CommandMediatorTest {
     }
     
     @Test
-    public void getRoverLocationAndCardinalPoint_returnsTheNewlyExpectedRoversPositionAndCardinalPoint_whenTheRoverTriesToMoveEastwardsWhilstWithinTheTerrainsMaxmimEasternBound() throws Exception {
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverTriesToMoveEastwardsWhilstWithinTheTerrainsMaxmimEasternBound() throws Exception {
         //Arrange
         Command command = Command.MOVE_ONE_SPACE_FORWARD;
         terrainSurfaceArea = "5 5";
@@ -191,7 +191,7 @@ public class CommandMediatorTest {
     }
     
     @Test
-    public void getRoverLocationAndCardinalPoint_returnsTheNewlyExpectedRoversPositionAndCardinalPoint_whenTheRoverTriesToMoveWastwardsWhilstWithinTheTerrainsMaxmimWesternBound() throws Exception {
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverTriesToMoveWastwardsWhilstWithinTheTerrainsMaxmimWesternBound() throws Exception {
         //Arrange
         Command command = Command.MOVE_ONE_SPACE_FORWARD;
         terrainSurfaceArea = "4 4";
@@ -214,7 +214,7 @@ public class CommandMediatorTest {
     }
     
     @Test
-    public void getRoverLocationAndCardinalPoint_returnsTheNewlyExpectedRoversPositionAndCardinalPoint_whenTheRoverTriesToMoveNorthwardsWhilstWithinTheTerrainsMaxmimNorthernBound() throws Exception {
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverTriesToMoveNorthwardsWhilstWithinTheTerrainsMaxmimNorthernBound() throws Exception {
         //Arrange
         Command command = Command.MOVE_ONE_SPACE_FORWARD;
         terrainSurfaceArea = "4 4";
@@ -243,7 +243,7 @@ public class CommandMediatorTest {
     }
     
     @Test
-    public void getRoverLocationAndCardinalPoint_returnsTheNewlyExpectedRoversPositionAndCardinalPoint_whenTheRoverTriesToMoveSouthwardsWhilstWithinTheTerrainsMaxmimSouthernBound() throws Exception {
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverTriesToMoveSouthwardsWhilstWithinTheTerrainsMaxmimSouthernBound() throws Exception {
         //Arrange
         Command command = Command.MOVE_ONE_SPACE_FORWARD;
         terrainSurfaceArea = "4 4";
@@ -266,12 +266,12 @@ public class CommandMediatorTest {
     }
     
     @Test
-    public void getRoverLocationAndCardinalPoint_TheRoverFaces_whenTheRoverCommandedToRotateNinetyDegreesToTheLeftWhilstFacingEastwards() throws Exception {
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverIsCommandedToRotateNinetyDegreesToTheLeftWhilstFacingEastwards() throws Exception {
         //Arrange
-        Command command = Command.MOVE_ONE_SPACE_FORWARD;
+        Command command = Command.ROTATE_NINETY_DEGREES_LEFT;
         terrainSurfaceArea = "4 4";
-        roverStartingInstructions = "1 2 S";
-        String expectedRoverPosition = "1 3 S";
+        roverStartingInstructions = "1 2 E";
+        String expectedRoverPosition = "1 2 N";
         
         Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
         //Act
@@ -280,11 +280,169 @@ public class CommandMediatorTest {
         mediator.executeCommand(command);
         //Assert
         assertEquals(expectedRoverPosition, mediator.getRoverLocationAndCardinalPoint());
+    }
+    
+    @Test
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverIsCommandedToRotateNinetyDegreesToTheLeftWhilstFacingWestwards() throws Exception {
         //Arrange
-        expectedRoverPosition = "1 4 S";
+        Command command = Command.ROTATE_NINETY_DEGREES_LEFT;
+        terrainSurfaceArea = "4 4";
+        roverStartingInstructions = "1 2 W";
+        String expectedRoverPosition = "1 2 S";
+        
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
         //Act
+        CommandMediator mediator = new CommandMediator(request);
+        
         mediator.executeCommand(command);
         //Assert
         assertEquals(expectedRoverPosition, mediator.getRoverLocationAndCardinalPoint());
+    }
+    
+    @Test
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverIsCommandedToRotateNinetyDegreesToTheLeftWhilstFacingNorthwards() throws Exception {
+        //Arrange
+        Command command = Command.ROTATE_NINETY_DEGREES_LEFT;
+        terrainSurfaceArea = "4 4";
+        roverStartingInstructions = "1 2 N";
+        String expectedRoverPosition = "1 2 W";
+        
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
+        //Act
+        CommandMediator mediator = new CommandMediator(request);
+        
+        mediator.executeCommand(command);
+        //Assert
+        assertEquals(expectedRoverPosition, mediator.getRoverLocationAndCardinalPoint());
+    }
+    
+    @Test
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverIsCommandedToRotateNinetyDegreesToTheLeftWhilstFacingSouthwards() throws Exception {
+        //Arrange
+        Command command = Command.ROTATE_NINETY_DEGREES_LEFT;
+        terrainSurfaceArea = "4 4";
+        roverStartingInstructions = "1 2 S";
+        String expectedRoverPosition = "1 2 E";
+        
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
+        //Act
+        CommandMediator mediator = new CommandMediator(request);
+        
+        mediator.executeCommand(command);
+        //Assert
+        assertEquals(expectedRoverPosition, mediator.getRoverLocationAndCardinalPoint());
+    }
+    
+    @Test
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverIsCommandedToRotateNinetyDegreesToTheRightWhilstFacingEastwards() throws Exception {
+        //Arrange
+        Command command = Command.ROTATE_NINETY_DEGREES_RIGHT;
+        terrainSurfaceArea = "4 4";
+        roverStartingInstructions = "1 2 E";
+        String expectedRoverPosition = "1 2 S";
+        
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
+        //Act
+        CommandMediator mediator = new CommandMediator(request);
+        
+        mediator.executeCommand(command);
+        //Assert
+        assertEquals(expectedRoverPosition, mediator.getRoverLocationAndCardinalPoint());
+    }
+    
+    @Test
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverIsCommandedToRotateNinetyDegreesToTheRightWhilstFacingWestwards() throws Exception {
+        //Arrange
+        Command command = Command.ROTATE_NINETY_DEGREES_RIGHT;
+        terrainSurfaceArea = "4 4";
+        roverStartingInstructions = "1 2 W";
+        String expectedRoverPosition = "1 2 N";
+        
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
+        //Act
+        CommandMediator mediator = new CommandMediator(request);
+        
+        mediator.executeCommand(command);
+        //Assert
+        assertEquals(expectedRoverPosition, mediator.getRoverLocationAndCardinalPoint());
+    }
+    
+    @Test
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverIsCommandedToRotateNinetyDegreesToTheRightWhilstFacingNorthwards() throws Exception {
+        //Arrange
+        Command command = Command.ROTATE_NINETY_DEGREES_RIGHT;
+        terrainSurfaceArea = "4 4";
+        roverStartingInstructions = "1 2 N";
+        String expectedRoverPosition = "1 2 E";
+        
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
+        //Act
+        CommandMediator mediator = new CommandMediator(request);
+        
+        mediator.executeCommand(command);
+        //Assert
+        assertEquals(expectedRoverPosition, mediator.getRoverLocationAndCardinalPoint());
+    }
+    
+    @Test
+    public void getRoverLocationAndCardinalPoint_returnsTheExpectedRoversPositionAndCardinalPoint_whenTheRoverIsCommandedToRotateNinetyDegreesToTheRightWhilstFacingSouthwards() throws Exception {
+        //Arrange
+        Command command = Command.ROTATE_NINETY_DEGREES_RIGHT;
+        terrainSurfaceArea = "4 4";
+        roverStartingInstructions = "1 2 S";
+        String expectedRoverPosition = "1 2 W";
+        
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
+        //Act
+        CommandMediator mediator = new CommandMediator(request);
+        
+        mediator.executeCommand(command);
+        //Assert
+        assertEquals(expectedRoverPosition, mediator.getRoverLocationAndCardinalPoint());
+    }
+    
+    @Test
+    public void executeCommands_changesTheRoversPositionAndCardinalPointToTheExpected_whenTheRoverHasBeenGiveCommandsToMoveForwardAndRotate() throws Exception {
+        //Arrange
+        terrainSurfaceArea = "8 10";
+        roverStartingInstructions = "1 2 E";
+        commands = "MMLMRMMRRMML";
+        String expectedRoverPosition = "3 1 S";
+        
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
+        CommandMediator mediator = new CommandMediator(request);
+        //Act
+        mediator.executeCommands();
+        //Assert
+        assertEquals(expectedRoverPosition, mediator.getRoverLocationAndCardinalPoint());
+        //Arrange
+        terrainSurfaceArea = "8 10";
+        roverStartingInstructions = "1 2 S";
+        commands = "MMMMR";
+        expectedRoverPosition = "1 6 W";
+        
+        request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
+        mediator = new CommandMediator(request);
+        //Act
+        mediator.executeCommands();
+        //Assert
+        assertEquals(expectedRoverPosition, mediator.getRoverLocationAndCardinalPoint());
+    }
+    
+    @Test
+    public void executeCommands_changesTheRoversPositionAndCardinalPointToTheExpected_whenTheRoverHasBeenGiveCommandsToMoveForwardAndRotatePassedTheTerrainsSurfaceAreaBounds() throws Exception {
+        //Arrange
+        terrainSurfaceArea = "2 2";
+        roverStartingInstructions = "0 0 S";
+        commands = "MMMMRMMRMRMM";
+        String expectedRoverPosition = "2 1 E";
+        
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
+        CommandMediator mediator = new CommandMediator(request);
+        //Act
+        mediator.executeCommands();
+        //Assert
+        assertEquals(expectedRoverPosition, mediator.getRoverLocationAndCardinalPoint());
+        
     }
 }
