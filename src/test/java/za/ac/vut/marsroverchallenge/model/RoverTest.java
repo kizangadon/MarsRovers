@@ -9,6 +9,7 @@ import za.ac.vut.marsroverchallenge.exception.model.PointOutOfTerrainSurfaceArea
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 import za.ac.vut.marsroverchallenge.model.Rover.CardinalPoint;
 
@@ -303,5 +304,133 @@ public class RoverTest {
         rover.moveOneStepForward(terrain);
         //Assert
         assertEquals(expectedVerticalCoordinate, rover.getCurrentVerticalCoordinate());
+    }
+    
+    @Test
+    public void rotateNinetyDegreesLeft_changesTheRoversCardinalPointToNorth_whenTheRoverIsFacingEastwards() throws Exception {
+        //Arrange
+        CardinalPoint expectedCardinalPoint = CardinalPoint.NORTH;
+        int horizontalCoordinate = 1;
+        int verticalCoordinate = 2;
+        CardinalPoint cardinalPoint = CardinalPoint.EAST;
+        CoordinatePoint point = new CoordinatePoint(horizontalCoordinate, verticalCoordinate);
+        
+        Rover rover = new Rover(point, cardinalPoint);
+        //Act
+        rover.rotateNinetyDegreesLeft();
+        //Assert
+        assertEquals(expectedCardinalPoint, rover.getCardinalPoint());
+    }
+    
+    @Test
+    public void rotateNinetyDegreesLeft_changesTheRoversCardinalPointToSouth_whenTheRoverIsFacingWestwards() throws Exception {
+        //Arrange
+        CardinalPoint expectedCardinalPoint = CardinalPoint.SOUTH;
+        int horizontalCoordinate = 1;
+        int verticalCoordinate = 2;
+        CardinalPoint cardinalPoint = CardinalPoint.WEST;
+        CoordinatePoint point = new CoordinatePoint(horizontalCoordinate, verticalCoordinate);
+        
+        Rover rover = new Rover(point, cardinalPoint);
+        //Act
+        rover.rotateNinetyDegreesLeft();
+        //Assert
+        assertEquals(expectedCardinalPoint, rover.getCardinalPoint());
+    }
+    
+    @Test
+    public void rotateNinetyDegreesLeft_changesTheRoversCardinalPointToWest_whenTheRoverIsFacingNorthwards() throws Exception {
+        //Arrange
+        CardinalPoint expectedCardinalPoint = CardinalPoint.WEST;
+        int horizontalCoordinate = 1;
+        int verticalCoordinate = 2;
+        CardinalPoint cardinalPoint = CardinalPoint.NORTH;
+        CoordinatePoint point = new CoordinatePoint(horizontalCoordinate, verticalCoordinate);
+        
+        Rover rover = new Rover(point, cardinalPoint);
+        //Act
+        rover.rotateNinetyDegreesLeft();
+        //Assert
+        assertEquals(expectedCardinalPoint, rover.getCardinalPoint());
+    }
+    
+    @Test
+    public void rotateNinetyDegreesLeft_changesTheRoversCardinalPointToEast_whenTheRoverIsFacingSouthwards() throws Exception {
+        //Arrange
+        CardinalPoint expectedCardinalPoint = CardinalPoint.WEST;
+        int horizontalCoordinate = 1;
+        int verticalCoordinate = 2;
+        CardinalPoint cardinalPoint = CardinalPoint.NORTH;
+        CoordinatePoint point = new CoordinatePoint(horizontalCoordinate, verticalCoordinate);
+        
+        Rover rover = new Rover(point, cardinalPoint);
+        //Act
+        rover.rotateNinetyDegreesLeft();
+        //Assert
+        assertEquals(expectedCardinalPoint, rover.getCardinalPoint());
+    }
+    
+    @Test
+    public void rotateNinetyDegreesRight_changesTheRoversCardinalPointToSouth_whenTheRoverIsFacingEastwards() throws Exception {
+        //Arrange
+        CardinalPoint expectedCardinalPoint = CardinalPoint.SOUTH;
+        int horizontalCoordinate = 1;
+        int verticalCoordinate = 2;
+        CardinalPoint cardinalPoint = CardinalPoint.EAST;
+        CoordinatePoint point = new CoordinatePoint(horizontalCoordinate, verticalCoordinate);
+        
+        Rover rover = new Rover(point, cardinalPoint);
+        //Act
+        rover.rotateNinetyDegreesRight();
+        //Assert
+        assertEquals(expectedCardinalPoint, rover.getCardinalPoint());
+    }
+    
+    @Test
+    public void rotateNinetyDegreesRight_changesTheRoversCardinalPointToNorth_whenTheRoverIsFacingWestwards() throws Exception {
+        //Arrange
+        CardinalPoint expectedCardinalPoint = CardinalPoint.NORTH;
+        int horizontalCoordinate = 1;
+        int verticalCoordinate = 2;
+        CardinalPoint cardinalPoint = CardinalPoint.WEST;
+        CoordinatePoint point = new CoordinatePoint(horizontalCoordinate, verticalCoordinate);
+        
+        Rover rover = new Rover(point, cardinalPoint);
+        //Act
+        rover.rotateNinetyDegreesRight();
+        //Assert
+        assertEquals(expectedCardinalPoint, rover.getCardinalPoint());
+    }
+    
+    @Test
+    public void rotateNinetyDegreesRight_changesTheRoversCardinalPointToEast_whenTheRoverIsFacingNorthwards() throws Exception {
+        //Arrange
+        CardinalPoint expectedCardinalPoint = CardinalPoint.EAST;
+        int horizontalCoordinate = 1;
+        int verticalCoordinate = 2;
+        CardinalPoint cardinalPoint = CardinalPoint.NORTH;
+        CoordinatePoint point = new CoordinatePoint(horizontalCoordinate, verticalCoordinate);
+        
+        Rover rover = new Rover(point, cardinalPoint);
+        //Act
+        rover.rotateNinetyDegreesRight();
+        //Assert
+        assertEquals(expectedCardinalPoint, rover.getCardinalPoint());
+    }
+    
+    @Test
+    public void rotateNinetyDegreesRight_changesTheRoversCardinalPointToWest_whenTheRoverIsFacingSouthwards() throws Exception {
+        //Arrange
+        CardinalPoint expectedCardinalPoint = CardinalPoint.WEST;
+        int horizontalCoordinate = 1;
+        int verticalCoordinate = 2;
+        CardinalPoint cardinalPoint = CardinalPoint.SOUTH;
+        CoordinatePoint point = new CoordinatePoint(horizontalCoordinate, verticalCoordinate);
+        
+        Rover rover = new Rover(point, cardinalPoint);
+        //Act
+        rover.rotateNinetyDegreesRight();
+        //Assert
+        assertEquals(expectedCardinalPoint, rover.getCardinalPoint());
     }
 }

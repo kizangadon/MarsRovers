@@ -15,9 +15,9 @@ import za.ac.vut.marsroverchallenge.exception.model.PointOutOfTerrainSurfaceArea
  */
 public class Rover implements IRover{
     //The Rover's current coordinate point on a terrain.
-    private CoordinatePoint currentPoint;
+    private CoordinatePoint point;
     //The Rover's current cardinal point that they are facing on a terrain
-    private CardinalPoint currentCardinalPoint;
+    private CardinalPoint cardinalPoint;
 
     /**
      * The Cardinal Point a Rover could be facing
@@ -52,7 +52,7 @@ public class Rover implements IRover{
      * @param coordinatePoint 
      */
     public Rover(CoordinatePoint coordinatePoint) {
-        this.currentPoint = coordinatePoint;
+        this.point = coordinatePoint;
     }
 
     /**
@@ -60,12 +60,12 @@ public class Rover implements IRover{
      * @param cardinalPoint 
      */
     public Rover(CardinalPoint cardinalPoint) {
-        this.currentCardinalPoint = cardinalPoint;
+        this.cardinalPoint = cardinalPoint;
     }
     
     public Rover(CoordinatePoint coordinatePoint, CardinalPoint cardinalPoint) {
-        this.currentPoint = coordinatePoint;
-        this.currentCardinalPoint = cardinalPoint;
+        this.point = coordinatePoint;
+        this.cardinalPoint = cardinalPoint;
     }
     
     /**
@@ -77,19 +77,19 @@ public class Rover implements IRover{
      */
     private void moveOneStepForwardEastwards(Terrain terrain) throws PointOutOfTerrainSurfaceAreaBoundsException, IllegalCoordinateValueException {
         int targetHorizontalCoordinate = this.getCurrentHorizontalCoordinate() + 1;
-        int targetVerticalCoordinate = this.currentPoint.getVerticalCoordinate();
+        int targetVerticalCoordinate = this.point.getVerticalCoordinate();
         
         CoordinatePoint targetPoint = new CoordinatePoint(targetHorizontalCoordinate, targetVerticalCoordinate);
         
         if(!Rover.isPotentialMoveAllowed(terrain, targetPoint))
             throw new PointOutOfTerrainSurfaceAreaBoundsException();
         
-        this.currentPoint = targetPoint;
+        this.point = targetPoint;
     }
     
     private void moveOneStepForwardWestwards(Terrain terrain) throws PointOutOfTerrainSurfaceAreaBoundsException, IllegalCoordinateValueException {
         int targetHorizontalCoordinate = this.getCurrentHorizontalCoordinate() - 1;
-        int targetVerticalCoordinate = this.currentPoint.getVerticalCoordinate();
+        int targetVerticalCoordinate = this.point.getVerticalCoordinate();
         
         if(targetHorizontalCoordinate < 0)
             throw new PointOutOfTerrainSurfaceAreaBoundsException();
@@ -99,12 +99,12 @@ public class Rover implements IRover{
         if(!Rover.isPotentialMoveAllowed(terrain, targetPoint))
             throw new PointOutOfTerrainSurfaceAreaBoundsException();
         
-        this.currentPoint = targetPoint;
+        this.point = targetPoint;
     }
     
     private void moveOneStepForwardNorthwards(Terrain terrain) throws PointOutOfTerrainSurfaceAreaBoundsException, IllegalCoordinateValueException {
         int targetHorizontalCoordinate = this.getCurrentHorizontalCoordinate();
-        int targetVerticalCoordinate = this.currentPoint.getVerticalCoordinate() - 1;
+        int targetVerticalCoordinate = this.point.getVerticalCoordinate() - 1;
         
         if(targetVerticalCoordinate < 0)
             throw new PointOutOfTerrainSurfaceAreaBoundsException();
@@ -114,12 +114,12 @@ public class Rover implements IRover{
         if(!Rover.isPotentialMoveAllowed(terrain, targetPoint))
             throw new PointOutOfTerrainSurfaceAreaBoundsException();
         
-        this.currentPoint = targetPoint;
+        this.point = targetPoint;
     }
     
     private void moveOneStepForwardSouthwards(Terrain terrain) throws PointOutOfTerrainSurfaceAreaBoundsException, IllegalCoordinateValueException {
         int targetHorizontalCoordinate = this.getCurrentHorizontalCoordinate();
-        int targetVerticalCoordinate = this.currentPoint.getVerticalCoordinate() + 1;
+        int targetVerticalCoordinate = this.point.getVerticalCoordinate() + 1;
         
         if(targetVerticalCoordinate < 0)
             throw new PointOutOfTerrainSurfaceAreaBoundsException();
@@ -129,7 +129,7 @@ public class Rover implements IRover{
         if(!Rover.isPotentialMoveAllowed(terrain, targetPoint))
             throw new PointOutOfTerrainSurfaceAreaBoundsException();
         
-        this.currentPoint = targetPoint;
+        this.point = targetPoint;
     }
 
     /**
@@ -138,7 +138,7 @@ public class Rover implements IRover{
      */
     @Override
     public CardinalPoint getCardinalPoint() {
-        return currentCardinalPoint;
+        return cardinalPoint;
     }
     
     /**
@@ -147,7 +147,7 @@ public class Rover implements IRover{
      */
     @Override
     public CoordinatePoint getCoordinatePoint() {
-        return currentPoint;
+        return point;
     }
     
     /**
@@ -156,7 +156,7 @@ public class Rover implements IRover{
      */
     @Override
     public int getCurrentHorizontalCoordinate() {
-        return currentPoint.getHorizontalCoordinate();
+        return point.getHorizontalCoordinate();
     }
     
     /**
@@ -165,7 +165,7 @@ public class Rover implements IRover{
      */
     @Override
     public int getCurrentVerticalCoordinate() {
-        return currentPoint.getVerticalCoordinate();
+        return point.getVerticalCoordinate();
     }
     
     /**
@@ -187,7 +187,7 @@ public class Rover implements IRover{
      */
     @Override
     public void moveOneStepForward(Terrain terrain) throws PointOutOfTerrainSurfaceAreaBoundsException, IllegalCoordinateValueException {
-        switch(currentCardinalPoint){
+        switch(cardinalPoint){
             case EAST:
                 moveOneStepForwardEastwards(terrain);
                 break;
@@ -201,12 +201,48 @@ public class Rover implements IRover{
                 moveOneStepForwardSouthwards(terrain);
         }
     }
+    
+    @Override
+    public void rotateNinetyDegreesLeft() {
+        switch(cardinalPoint){
+            case EAST:
+                cardinalPoint = CardinalPoint.NORTH;
+                break;
+            case WEST:
+                cardinalPoint = CardinalPoint.SOUTH;
+                break;
+            case NORTH:
+                cardinalPoint = CardinalPoint.WEST;
+                break;
+            case SOUTH:
+                cardinalPoint = CardinalPoint.EAST;
+                break;
+        }
+    }
+    
+    @Override
+    public void rotateNinetyDegreesRight() {
+        switch(cardinalPoint){
+            case EAST:
+                cardinalPoint = CardinalPoint.SOUTH;
+                break;
+            case WEST:
+                cardinalPoint = CardinalPoint.NORTH;
+                break;
+            case NORTH:
+                cardinalPoint = CardinalPoint.EAST;
+                break;
+            case SOUTH:
+                cardinalPoint = CardinalPoint.WEST;
+                break;
+        }
+    }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 79 * hash + Objects.hashCode(this.currentPoint);
-        hash = 79 * hash + Objects.hashCode(this.currentCardinalPoint);
+        hash = 79 * hash + Objects.hashCode(this.point);
+        hash = 79 * hash + Objects.hashCode(this.cardinalPoint);
         return hash;
     }
 
@@ -222,10 +258,10 @@ public class Rover implements IRover{
             return false;
         }
         final Rover other = (Rover) obj;
-        if (!Objects.equals(this.currentPoint, other.currentPoint)) {
+        if (!Objects.equals(this.point, other.point)) {
             return false;
         }
-        if (this.currentCardinalPoint != other.currentCardinalPoint) {
+        if (this.cardinalPoint != other.cardinalPoint) {
             return false;
         }
         return true;

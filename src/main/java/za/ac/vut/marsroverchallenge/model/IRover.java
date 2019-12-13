@@ -18,4 +18,6 @@ public interface IRover {
     int getCurrentHorizontalCoordinate();
     int getCurrentVerticalCoordinate();
     void moveOneStepForward(Terrain terrain) throws PointOutOfTerrainSurfaceAreaBoundsException, IllegalCoordinateValueException;
+    void rotateNinetyDegreesLeft();
+    void rotateNinetyDegreesRight();
 }
