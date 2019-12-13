@@ -13,6 +13,8 @@ import za.ac.vut.marsroverchallenge.exception.model.PointOutOfTerrainSurfaceArea
  * @author 20180172
  */
 public interface IRover {
+    Rover.CardinalPoint getCardinalPoint();
+    CoordinatePoint getCoordinatePoint();
     int getCurrentHorizontalCoordinate();
     int getCurrentVerticalCoordinate();
     void moveOneStepForward(Terrain terrain) throws PointOutOfTerrainSurfaceAreaBoundsException, IllegalCoordinateValueException;

@@ -12,7 +12,7 @@ import za.ac.vut.marsroverchallenge.exception.model.PointOutOfTerrainSurfaceArea
  *
  * @author 20180172
  */
-public class Rover {
+public class Rover implements IRover{
     //The Rover's current coordinate point on a terrain.
     private CoordinatePoint currentPoint;
     //The Rover's current cardinal point that they are facing on a terrain
@@ -135,6 +135,7 @@ public class Rover {
      * Gets the Rover's current cardinal point they are facing 
      * @return cardinal point 
      */
+    @Override
     public CardinalPoint getCardinalPoint() {
         return currentCardinalPoint;
     }
@@ -143,6 +144,7 @@ public class Rover {
      * Gets the Rover's current coordinate point on a terrain
      * @return coordinate point 
      */
+    @Override
     public CoordinatePoint getCoordinatePoint() {
         return currentPoint;
     }
@@ -151,6 +153,7 @@ public class Rover {
      * Gets the rover's current horizontal coordinate on a terrain
      * @return current horizontal coordinate
      */
+    @Override
     public int getCurrentHorizontalCoordinate() {
         return currentPoint.getHorizontalCoordinate();
     }
@@ -159,6 +162,7 @@ public class Rover {
      * Gets the rover's current vertical coordinate on a terrain
      * @return current vertical coordinate
      */
+    @Override
     public int getCurrentVerticalCoordinate() {
         return currentPoint.getVerticalCoordinate();
     }
@@ -180,6 +184,7 @@ public class Rover {
      * @throws PointOutOfTerrainSurfaceAreaBoundsException
      * @throws IllegalCoordinateValueException 
      */
+    @Override
     public void moveOneStepForward(Terrain terrain) throws PointOutOfTerrainSurfaceAreaBoundsException, IllegalCoordinateValueException {
         switch(currentCardinalPoint){
             case EAST:
