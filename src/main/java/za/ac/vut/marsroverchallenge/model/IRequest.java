@@ -11,11 +11,11 @@ import java.util.List;
  *
  * @author 20180172
  */
-public interface ICommandRequest {
+public interface IRequest {
     int getTerrainHorizontalBound();
     int getTerrainVerticalBound();
     int getRoverHorizontalCoordinate();
     int getRoverVerticalCoordinate();
     String getRoverCardinalPoint();
-    List<String> getCommands();
+    String getCommands();
 }

@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author 20180172
  */
-public class Request implements ICommandRequest{
+public class Request implements IRequest{
     //The terrain surface area's horizontal bound
     private int terrainHorizontalBound;
     //The terrain surface area's vertical bound
@@ -24,7 +24,7 @@ public class Request implements ICommandRequest{
     //The rover's starting cardinal point on a terrain
     private String roverCardinalPoint;
     //List of commands for a rover to follow
-    private List<String> commands;
+    private String commands;
     
     /**
      * 
@@ -92,7 +92,7 @@ public class Request implements ICommandRequest{
         if(!commands.matches("[a-zA-Z]+"))
             throw new IllegalArgumentException("Dear user, the commands given to the rover must be alphabets and not contain spaces between them.");
         //Convert string of commands into an array of commands
-        this.commands = Arrays.asList(commands.split(""));
+        this.commands = commands;
     }
 
     /**
@@ -142,10 +142,10 @@ public class Request implements ICommandRequest{
 
     /**
      * Gets the list of commands for a rover
-     * @return command list
+     * @return commands
      */
     @Override
-    public List<String> getCommands() {
+    public String getCommands() {
         return this.commands;
     }
 }

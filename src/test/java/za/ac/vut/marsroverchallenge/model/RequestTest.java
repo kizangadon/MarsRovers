@@ -241,15 +241,15 @@ public class RequestTest {
     }
     
     @Test
-    public void getCommands_returnsAListContainingTheCommandsThatWereGivenInTheConstructor() throws Exception {
+    public void getCommands_returnsTheCommandsThatWereGivenInTheConstructor() throws Exception {
         //Arrange
         String roverStartingInstructions = "1 2 E";
         String terrainSurfaceArea = "8 10";
         String commands = "AABBCC";
-        List<String> commandList = Arrays.asList(new String[]{"A", "A", "B", "B", "C", "C"});
+        String expectedCommands = "AABBCC";
         //Act
         Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
         //Assert
-        assertEquals(commandList, request.getCommands());
+        assertEquals(expectedCommands, request.getCommands());
     }
 }
