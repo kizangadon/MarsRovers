@@ -53,7 +53,7 @@ public class App {
                         System.out.println("After following your commands, the Rover's new position and cardinal point is: ");
                         System.out.println(mediator.getRoverLocationAndCardinalPoint());
                         System.out.println("\n");
-                    } catch (IllegalArgumentException | IllegalCommandValueException | IllegalCoordinateValueException | IllegalBoundValueException e) {
+                    } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                 }
