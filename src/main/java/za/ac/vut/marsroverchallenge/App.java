@@ -91,25 +91,21 @@ public class App {
     }
 
     public static void menuGiveRoverInstructions() {
-        System.out.println("To exit the application enter: -1");
         System.out.println("Dear user, you are about to give the Rover instructions, please follow the guide.");
         System.out.println("\n");
     }
     
     public static void menuRoverInstructionsTerrainSurfaceArea() {
-        System.out.println("To exit the application enter: -1");
         System.out.println("Please enter the terrain's surface area bounds (horizontal and vertical bounds. Please use numbers, separated with a space. Eg. 8 10.");
         System.out.println("\n");
     }
     
     public static void menuRoverInstructionsRoverInstructions() {
-        System.out.println("To exit the application enter: -1");
         System.out.println("Please enter the Rover's positional instructions, their horizontal coordinate, their vertical coordinate and the cardinal point. Please separate them with a space. Eg. 1 2 E.");
         System.out.println("\n");
     }
     
     public static void menuRoverInstructionsCommands() {
-        System.out.println("To exit the application enter: -1");
         System.out.println("Please enter the commands to be given to the Rover. Please use alphabets, can be upper or lower case. Eg. MMLRMM or mmmlrm");
         System.out.println("\n");
     }
