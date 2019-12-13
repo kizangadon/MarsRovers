@@ -47,21 +47,32 @@ public class App {
                         Request request = createUserRequest(reader);
                         
                         CommandMediator mediator = new CommandMediator(request);
-                    } catch (IllegalCommandValueException | IllegalCoordinateValueException | IllegalBoundValueException e) {
-
+                        
+                        mediator.executeCommands();
+                        
+                        System.out.println("After following your commands, the Rover's new position and cardinal point is: ");
+                        System.out.println(mediator.getRoverLocationAndCardinalPoint());
+                        System.out.println("\n");
+                    } catch (IllegalArgumentException | IllegalCommandValueException | IllegalCoordinateValueException | IllegalBoundValueException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
             } catch (NumberFormatException | IOException e) {
                 System.out.println("Dear user, you chose the wrong option");
+                System.out.println("\n");
             }
         }
 
     }
 
     public static Request createUserRequest(BufferedReader reader) throws IOException {
-
+        menuRoverInstructionsTerrainSurfaceArea();
         terrainSurfaceArea = reader.readLine();
+        
+        menuRoverInstructionsRoverInstructions();
         roverStartingInstructions = reader.readLine();
+        
+        menuRoverInstructionsCommands();
         commands = reader.readLine();
 
         return new Request(terrainSurfaceArea, roverStartingInstructions, commands);
@@ -81,7 +92,25 @@ public class App {
 
     public static void menuGiveRoverInstructions() {
         System.out.println("To exit the application enter: -1");
-        System.out.println("Please enter the terrain's surface area bounds (horizontal and vertical bounds. Please use numbers. Eg. 8 10.");
-
+        System.out.println("Dear user, you are about to give the Rover instructions, please follow the guide.");
+        System.out.println("\n");
+    }
+    
+    public static void menuRoverInstructionsTerrainSurfaceArea() {
+        System.out.println("To exit the application enter: -1");
+        System.out.println("Please enter the terrain's surface area bounds (horizontal and vertical bounds. Please use numbers, separated with a space. Eg. 8 10.");
+        System.out.println("\n");
+    }
+    
+    public static void menuRoverInstructionsRoverInstructions() {
+        System.out.println("To exit the application enter: -1");
+        System.out.println("Please enter the Rover's positional instructions, their horizontal coordinate, their vertical coordinate and the cardinal point. Please separate them with a space. Eg. 1 2 E.");
+        System.out.println("\n");
+    }
+    
+    public static void menuRoverInstructionsCommands() {
+        System.out.println("To exit the application enter: -1");
+        System.out.println("Please enter the commands to be given to the Rover. Please use alphabets, can be upper or lower case. Eg. MMLRMM or mmmlrm");
+        System.out.println("\n");
     }
 }
