@@ -22,7 +22,7 @@ public class RoverTest {
     }
     
     @Test
-    public void test_getCoordinatePoint_returnsTheRoversCurrentCoordinatePointSetInTheConstructor() throws Exception {
+    public void getCoordinatePoint_returnsTheRoversCurrentCoordinatePointSetInTheConstructor() throws Exception {
         //Arrange
         CoordinatePoint currentPoint = new CoordinatePoint(0, 0);
         //Act
@@ -38,7 +38,7 @@ public class RoverTest {
     }
     
     @Test
-    public void test_getCardinalPoint_returnsTheRoversCurrentCardinalPointTheyAreFacingSetInTheConstructor() throws Exception {
+    public void getCardinalPoint_returnsTheRoversCurrentCardinalPointTheyAreFacingSetInTheConstructor() throws Exception {
         //Arrange
         CardinalPoint currentCardinalPoint = Rover.CardinalPoint.EAST;
         //Act
@@ -54,7 +54,7 @@ public class RoverTest {
     }
     
     @Test
-    public void test_isPotentialMoveAllowed_returnsFalse_whenTheRequestedCoordinatePointOutsideTheTerrainsSurfaceArea() throws Exception {
+    public void isPotentialMoveAllowed_returnsFalse_whenTheRequestedCoordinatePointOutsideTheTerrainsSurfaceArea() throws Exception {
         //Arrange
         int horizontalPoint = 2;
         int verticalPoint = 1;
@@ -76,7 +76,7 @@ public class RoverTest {
     }
     
     @Test
-    public void test_isPotentialMoveAllowed_returnsTrue_whenTheRequestedCoordinatePointOutsideTheTerrainsSurfaceArea() throws Exception {
+    public void isPotentialMoveAllowed_returnsTrue_whenTheRequestedCoordinatePointOutsideTheTerrainsSurfaceArea() throws Exception {
         //Arrange
         int horizontalPoint = 2;
         int verticalPoint = 1;
@@ -98,7 +98,7 @@ public class RoverTest {
     }
     
     @Test(expected = PointOutOfTerrainSurfaceAreaBoundsException.class)
-    public void test_moveOneStepForward_throwsPointOutOfTerrainSurfaceAreaBoundsException_whenTheRoverIsFacingEastwardsAndTheRequestedPointIsOutsideTheTerrainsSurfaceArea() throws Exception {
+    public void moveOneStepForward_throwsPointOutOfTerrainSurfaceAreaBoundsException_whenTheRoverIsFacingEastwardsAndTheRequestedPointIsOutsideTheTerrainsSurfaceArea() throws Exception {
         //Arrange
         int horizontalCoordinate = 1;
         int verticalCoordinate = 1;
@@ -115,7 +115,7 @@ public class RoverTest {
     }
     
     @Test(expected = PointOutOfTerrainSurfaceAreaBoundsException.class)
-    public void test_moveOneStepForward_throwsPointOutOfTerrainSurfaceAreaBoundsException_whenTheRoverIsFacingWestwardsAndTheRequestedPointIsOutsideTheTerrainsSurfaceArea() throws Exception {
+    public void moveOneStepForward_throwsPointOutOfTerrainSurfaceAreaBoundsException_whenTheRoverIsFacingWestwardsAndTheRequestedPointIsOutsideTheTerrainsSurfaceArea() throws Exception {
         //Arrange
         int horizontalCoordinate = 0;
         int verticalCoordinate = 2;
@@ -132,7 +132,7 @@ public class RoverTest {
     }
     
     @Test(expected = PointOutOfTerrainSurfaceAreaBoundsException.class)
-    public void test_moveOneStepForward_throwsPointOutOfTerrainSurfaceAreaBoundsException_whenTheRoverIsFacingNorthwardsAndTheRequestedPointIsOutsideTheTerrainsSurfaceArea() throws Exception {
+    public void moveOneStepForward_throwsPointOutOfTerrainSurfaceAreaBoundsException_whenTheRoverIsFacingNorthwardsAndTheRequestedPointIsOutsideTheTerrainsSurfaceArea() throws Exception {
         //Arrange
         int horizontalCoordinate = 2;
         int verticalCoordinate = 0;
@@ -149,7 +149,7 @@ public class RoverTest {
     }
     
     @Test(expected = PointOutOfTerrainSurfaceAreaBoundsException.class)
-    public void test_moveOneStepForward_throwsPointOutOfTerrainSurfaceAreaBoundsException_whenTheRoverIsFacingSouthwardsAndTheRequestedPointIsOutsideTheTerrainsSurfaceArea() throws Exception {
+    public void moveOneStepForward_throwsPointOutOfTerrainSurfaceAreaBoundsException_whenTheRoverIsFacingSouthwardsAndTheRequestedPointIsOutsideTheTerrainsSurfaceArea() throws Exception {
         //Arrange
         int horizontalCoordinate = 1;
         int verticalCoordinate = 5;
@@ -166,7 +166,7 @@ public class RoverTest {
     }
     
     @Test
-    public void test_moveOneStepForward_increasesHorizontalCoordinateByOne_whenTheRoverIsFacingEastwardsAndTheRequestedPointIsWithinTheTerrainsSurfaceArea() throws Exception {
+    public void moveOneStepForward_increasesHorizontalCoordinateByOne_whenTheRoverIsFacingEastwardsAndTheRequestedPointIsWithinTheTerrainsSurfaceArea() throws Exception {
         //Arrange
         int horizontalCoordinate = 1;
         int expectedHorizontalCoordinate = 2;
@@ -201,7 +201,7 @@ public class RoverTest {
     }
     
     @Test
-    public void test_moveOneStepForward_decreasesHorizontalCoordinateByOne_whenTheRoverIsFacingWestwardsAndTheRequestedPointIsWithinTheTerrainsSurfaceArea() throws Exception {
+    public void moveOneStepForward_decreasesHorizontalCoordinateByOne_whenTheRoverIsFacingWestwardsAndTheRequestedPointIsWithinTheTerrainsSurfaceArea() throws Exception {
         //Arrange
         int horizontalCoordinate = 2;
         int expectedHorizontalCoordinate = 1;
@@ -236,7 +236,7 @@ public class RoverTest {
     }
     
     @Test
-    public void test_moveOneStepForward_decreasesVerticalCoordinateByOne_whenTheRoverIsFacingNorthwardsAndTheRequestedPointIsWithinTheTerrainsSurfaceArea() throws Exception {
+    public void moveOneStepForward_decreasesVerticalCoordinateByOne_whenTheRoverIsFacingNorthwardsAndTheRequestedPointIsWithinTheTerrainsSurfaceArea() throws Exception {
         //Arrange
         int horizontalCoordinate = 1;
         int verticalCoordinate = 2;
@@ -271,7 +271,7 @@ public class RoverTest {
     }
     
     @Test
-    public void test_moveOneStepForward_increasesVerticalCoordinateByOne_whenTheRoverIsFacingSouthwardsAndTheRequestedPointIsWithinTheTerrainsSurfaceArea() throws Exception {
+    public void moveOneStepForward_increasesVerticalCoordinateByOne_whenTheRoverIsFacingSouthwardsAndTheRequestedPointIsWithinTheTerrainsSurfaceArea() throws Exception {
         //Arrange
         int horizontalCoordinate = 2;
         int verticalCoordinate = 2;

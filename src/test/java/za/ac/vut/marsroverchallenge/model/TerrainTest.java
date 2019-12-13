@@ -21,7 +21,7 @@ public class TerrainTest {
     }
 
     @Test(expected = IllegalBoundValueException.class)
-    public void test_constructor_ThrowsAnIllegalHorizontalBoundValueException_WhenTheTerrainSurfaceHorizontalBoundIsLessThanOne() throws Exception{
+    public void constructor_ThrowsAnIllegalHorizontalBoundValueException_WhenTheTerrainSurfaceHorizontalBoundIsLessThanOne() throws Exception{
         //Terrain's surface horizontal bound
         int horizontalBound = 0;
         //Terrain's surface vertical bound
@@ -31,7 +31,7 @@ public class TerrainTest {
     }
     
     @Test(expected = IllegalBoundValueException.class)
-    public void test_constructor_ThrowsAnIllegalVerticalBoundValueException_WhenTheTerrainSurfaceVerticalBoundIsLessThanOne() throws Exception {
+    public void constructor_ThrowsAnIllegalVerticalBoundValueException_WhenTheTerrainSurfaceVerticalBoundIsLessThanOne() throws Exception {
         //Terrain's surface horizontal bound
         int horizontalBound = 1;
         //Terrain's surface vertical bound
@@ -41,7 +41,7 @@ public class TerrainTest {
     }
     
     @Test
-    public void test_checkIfPointIsWithinSurfaceArea_returnsFalse_whenRequestedHorizontalCoordinateIsOutsideTheSurfaceArea() throws Exception {
+    public void checkIfPointIsWithinSurfaceArea_returnsFalse_whenRequestedHorizontalCoordinateIsOutsideTheSurfaceArea() throws Exception {
         //Terrain's surface horizontal bound
         int horizontalBound = 1;
         //Terrain's surface vertical bound
@@ -57,7 +57,7 @@ public class TerrainTest {
     }
     
     @Test
-    public void test_checkIfPointIsWithinSurfaceArea_returnsFalse_whenRequestedVerticalCoordinateIsOutsideTheSurfaceArea() throws Exception {
+    public void checkIfPointIsWithinSurfaceArea_returnsFalse_whenRequestedVerticalCoordinateIsOutsideTheSurfaceArea() throws Exception {
         //Terrain's surface horizontal bound
         int horizontalBound = 1;
         //Terrain's surface vertical bound
@@ -73,7 +73,7 @@ public class TerrainTest {
     }
     
     @Test
-    public void test_checkIfPointIsWithinSurfaceArea_returnsTrue_whenRequestedCoordinatePointIsWithinTheSurfaceArea() throws Exception {
+    public void checkIfPointIsWithinSurfaceArea_returnsTrue_whenRequestedCoordinatePointIsWithinTheSurfaceArea() throws Exception {
         //Arrange
         //Terrain's surface horizontal bound
         int horizontalBound = 1;

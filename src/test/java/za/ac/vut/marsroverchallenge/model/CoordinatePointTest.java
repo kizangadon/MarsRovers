@@ -21,7 +21,7 @@ public class CoordinatePointTest {
     }
     
     @Test(expected = IllegalCoordinateValueException.class)
-    public void test_constructor_throwsAnIllegalCoordinateValueException_whenTheHorizontalCoordinateValueIsLessThanZero() throws Exception {
+    public void constructor_throwsAnIllegalCoordinateValueException_whenTheHorizontalCoordinateValueIsLessThanZero() throws Exception {
         //Arrange
         int horizontalCoordinate = -1;
         int verticalCoordinate = 0;
@@ -30,7 +30,7 @@ public class CoordinatePointTest {
     }
     
     @Test(expected = IllegalCoordinateValueException.class)
-    public void test_constructor_throwsAnIllegalCoordinateValueException_whenTheVerticalCoordinateValueIsLessThanZero() throws Exception {
+    public void constructor_throwsAnIllegalCoordinateValueException_whenTheVerticalCoordinateValueIsLessThanZero() throws Exception {
         //Arrange
         int horizontalCoordinate = 0;
         int verticalCoordinate = -1;
@@ -39,7 +39,7 @@ public class CoordinatePointTest {
     }
     
     @Test
-    public void test_getHorizontalCooridnate_returnsTheHorizontalCoordinateValueSetInTheConstructor() throws Exception {
+    public void getHorizontalCooridnate_returnsTheHorizontalCoordinateValueSetInTheConstructor() throws Exception {
         //Arrange
         int horizontalCoordinate = 0;
         int verticalCoordinate = 0;
@@ -56,7 +56,7 @@ public class CoordinatePointTest {
     }
     
     @Test
-    public void test_getVerticalCooridnate_returnsTheVerticalCoordinateValueSetInTheConstructor() throws Exception {
+    public void getVerticalCooridnate_returnsTheVerticalCoordinateValueSetInTheConstructor() throws Exception {
         //Arrange
         int horizontalCoordinate = 0;
         int verticalCoordinate = 0;
