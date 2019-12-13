@@ -45,5 +45,33 @@ public class Terrain implements ITerrain{
     public boolean checkIfPointIsWithinSurfaceArea(int horizontalPosition, int verticalPosition) {
         return (this.horizontalBound >= horizontalPosition && this.verticalBound >= verticalPosition);
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + this.horizontalBound;
+        hash = 89 * hash + this.verticalBound;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Terrain other = (Terrain) obj;
+        if (this.horizontalBound != other.horizontalBound) {
+            return false;
+        }
+        if (this.verticalBound != other.verticalBound) {
+            return false;
+        }
+        return true;
+    }    
 }

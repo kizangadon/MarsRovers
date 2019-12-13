@@ -5,6 +5,7 @@
  */
 package za.ac.vut.marsroverchallenge.model;
 
+import java.util.Objects;
 import za.ac.vut.marsroverchallenge.exception.model.IllegalCoordinateValueException;
 import za.ac.vut.marsroverchallenge.exception.model.PointOutOfTerrainSurfaceAreaBoundsException;
 
@@ -200,4 +201,34 @@ public class Rover implements IRover{
                 moveOneStepForwardSouthwards(terrain);
         }
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.currentPoint);
+        hash = 79 * hash + Objects.hashCode(this.currentCardinalPoint);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Rover other = (Rover) obj;
+        if (!Objects.equals(this.currentPoint, other.currentPoint)) {
+            return false;
+        }
+        if (this.currentCardinalPoint != other.currentCardinalPoint) {
+            return false;
+        }
+        return true;
+    }
+    
 }

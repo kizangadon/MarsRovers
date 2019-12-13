@@ -21,7 +21,7 @@ import org.junit.rules.ExpectedException;
  *
  * @author 20180172
  */
-public class CommandRequestTest {
+public class RequestTest {
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
     
@@ -37,7 +37,7 @@ public class CommandRequestTest {
         
         String terrainSurfaceArea = "810";
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea);
+        Request request = new Request(terrainSurfaceArea);
     }
     
     @Test
@@ -48,7 +48,7 @@ public class CommandRequestTest {
         
         String terrainSurfaceArea = "AB C";
   
-        CommandRequest request = new CommandRequest(terrainSurfaceArea);
+        Request request = new Request(terrainSurfaceArea);
     }
  
     @Test
@@ -57,14 +57,14 @@ public class CommandRequestTest {
         String terrainSurfaceArea = "8 10";
         int terrainHorizontalBound = 8;
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea);
+        Request request = new Request(terrainSurfaceArea);
         //Assert
         assertEquals(terrainHorizontalBound, request.getTerrainHorizontalBound());
         //Arrange
         terrainSurfaceArea = "5 6";
         terrainHorizontalBound = 5;
         //Act
-        request = new CommandRequest(terrainSurfaceArea);
+        request = new Request(terrainSurfaceArea);
         //Assert
         assertEquals(terrainHorizontalBound, request.getTerrainHorizontalBound());
     }
@@ -75,14 +75,14 @@ public class CommandRequestTest {
         String terrainSurfaceArea = "8    10";
         int terrainHorizontalBound = 8;
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea);
+        Request request = new Request(terrainSurfaceArea);
         //Assert
         assertEquals(terrainHorizontalBound, request.getTerrainHorizontalBound());
         //Arrange
         terrainSurfaceArea = "12    5";
         terrainHorizontalBound = 12;
         //Act
-        request = new CommandRequest(terrainSurfaceArea);
+        request = new Request(terrainSurfaceArea);
         //Assert
         assertEquals(terrainHorizontalBound, request.getTerrainHorizontalBound());
     }
@@ -93,14 +93,14 @@ public class CommandRequestTest {
         String terrainSurfaceArea = "5 7";
         int terrainVerticalBound = 7;
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea);
+        Request request = new Request(terrainSurfaceArea);
         //Assert
         assertEquals(terrainVerticalBound, request.getTerrainVerticalBound());
         //Arrange
         terrainSurfaceArea = "10 9";
         terrainVerticalBound = 9;
         //Act
-        request = new CommandRequest(terrainSurfaceArea);
+        request = new Request(terrainSurfaceArea);
         //Assert
         assertEquals(terrainVerticalBound, request.getTerrainVerticalBound());
     }
@@ -111,14 +111,14 @@ public class CommandRequestTest {
         String terrainSurfaceArea = "5      7";
         int terrainVerticalBound = 7;
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea);
+        Request request = new Request(terrainSurfaceArea);
         //Assert
         assertEquals(terrainVerticalBound, request.getTerrainVerticalBound());
         //Arrange
         terrainSurfaceArea = "10   9";
         terrainVerticalBound = 9;
         //Act
-        request = new CommandRequest(terrainSurfaceArea);
+        request = new Request(terrainSurfaceArea);
         //Assert
         assertEquals(terrainVerticalBound, request.getTerrainVerticalBound());
     }
@@ -131,7 +131,7 @@ public class CommandRequestTest {
         String roverStartingInstructions = "12E";
         String terrainSurfaceArea = "8 10";
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions);
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions);
         //Assert
     }
     
@@ -143,7 +143,7 @@ public class CommandRequestTest {
         String roverStartingInstructions = "A 2 2";
         String terrainSurfaceArea = "8 10";
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions);
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions);
         //Assert
     }
     
@@ -155,7 +155,7 @@ public class CommandRequestTest {
         String roverStartingInstructions = "1 2 EE";
         String terrainSurfaceArea = "8 10";
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions);
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions);
         //Assert
     }
     
@@ -166,14 +166,14 @@ public class CommandRequestTest {
         String terrainSurfaceArea = "8 10";
         int roverHorizontalCoordinate = 1;
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions);
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions);
         //Assert
         assertEquals(roverHorizontalCoordinate, request.getRoverHorizontalCoordinate());
         //Arrange
         roverStartingInstructions = "5 4 E";
         roverHorizontalCoordinate = 5;
         //Act
-        request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions);
+        request = new Request(terrainSurfaceArea, roverStartingInstructions);
         //Assert
         assertEquals(roverHorizontalCoordinate, request.getRoverHorizontalCoordinate());
     }
@@ -185,14 +185,14 @@ public class CommandRequestTest {
         String terrainSurfaceArea = "8 10";
         int roverVerticalCoordinate = 2;
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions);
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions);
         //Assert
         assertEquals(roverVerticalCoordinate, request.getRoverVerticalCoordinate());
         //Arrange
         roverStartingInstructions = "5 4 E";
         roverVerticalCoordinate = 4;
         //Act
-        request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions);
+        request = new Request(terrainSurfaceArea, roverStartingInstructions);
         //Assert
         assertEquals(roverVerticalCoordinate, request.getRoverVerticalCoordinate());
     }
@@ -204,14 +204,14 @@ public class CommandRequestTest {
         String terrainSurfaceArea = "8 10";
         String cardinalPoint = "E";
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions);
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions);
         //Assert
         assertEquals(cardinalPoint, request.getRoverCardinalPoint());
         //Arrange
         roverStartingInstructions = "5 4 W";
         cardinalPoint = "W";
         //Act
-        request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions);
+        request = new Request(terrainSurfaceArea, roverStartingInstructions);
         //Assert
         assertEquals(cardinalPoint, request.getRoverCardinalPoint());
     }
@@ -225,7 +225,7 @@ public class CommandRequestTest {
         String terrainSurfaceArea = "8 10";
         String commands = "123";
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions, commands);
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
     }
     
     @Test
@@ -237,7 +237,7 @@ public class CommandRequestTest {
         String terrainSurfaceArea = "8 10";
         String commands = "A A A";
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions, commands);
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
     }
     
     @Test
@@ -248,7 +248,7 @@ public class CommandRequestTest {
         String commands = "AABBCC";
         List<String> commandList = Arrays.asList(new String[]{"A", "A", "B", "B", "C", "C"});
         //Act
-        CommandRequest request = new CommandRequest(terrainSurfaceArea, roverStartingInstructions, commands);
+        Request request = new Request(terrainSurfaceArea, roverStartingInstructions, commands);
         //Assert
         assertEquals(commandList, request.getCommands());
     }

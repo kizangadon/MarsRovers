@@ -52,5 +52,35 @@ public class CoordinatePoint implements ICoordinatePoint{
     public int getVerticalCoordinate() {
         return this.verticalCoordinate;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + this.horizontalCoordinate;
+        hash = 41 * hash + this.verticalCoordinate;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CoordinatePoint other = (CoordinatePoint) obj;
+        if (this.horizontalCoordinate != other.horizontalCoordinate) {
+            return false;
+        }
+        if (this.verticalCoordinate != other.verticalCoordinate) {
+            return false;
+        }
+        return true;
+    }
+    
     
 }

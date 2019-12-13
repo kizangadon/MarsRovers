@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author 20180172
  */
-public class CommandRequest implements ICommandRequest{
+public class Request implements ICommandRequest{
     //The terrain surface area's horizontal bound
     private int terrainHorizontalBound;
     //The terrain surface area's vertical bound
@@ -30,7 +30,22 @@ public class CommandRequest implements ICommandRequest{
      * 
      * @param terrainSurfaceArea 
      */
-    public CommandRequest(String terrainSurfaceArea) {
+    public Request(String terrainSurfaceArea) {
+        setTerrainSurfaceArea(terrainSurfaceArea);
+    }
+
+    public Request(String terrainSurfaceArea, String roverStartingInstructions) {
+        setTerrainSurfaceArea(terrainSurfaceArea);
+        setRoverStartingInstructions(roverStartingInstructions);
+    }
+
+    public Request(String terrainSurfaceArea, String roverStartingInstructions, String commands) {
+        setTerrainSurfaceArea(terrainSurfaceArea);
+        setRoverStartingInstructions(roverStartingInstructions);
+        setCommands(commands);
+    }
+    
+    private void setTerrainSurfaceArea(String terrainSurfaceArea){
         if(!terrainSurfaceArea.contains(" "))
             throw new IllegalArgumentException("Dear user, the terrain surface area capacity consists of the horizontal and vertical bound which must be entered with a space ( ) separting them.");
         //Split the terrain surface area input by spaces between the values
@@ -50,8 +65,8 @@ public class CommandRequest implements ICommandRequest{
             throw new IllegalArgumentException("Dear user, the terrain surface area capacity must be a number, consiting of the horizontal and vertical bounds of the surface area.");
         }
     }
-
-    public CommandRequest(String terrainSurfaceArea, String roverStartingInstructions) {
+    
+    private void setRoverStartingInstructions(String roverStartingInstructions){
         //Check if rover's starting instructions doesn't have an spaces separating the values
         if(!roverStartingInstructions.contains(" "))
             throw new IllegalArgumentException("Dear user, the Rover's starting instructions must be their starting horizontal coordinate, separated by a space ( ), their starting vertical coordinate, separated by a space ( _) and then their cardinal point which they are facing (only use the first letter of the direction).");
@@ -72,8 +87,8 @@ public class CommandRequest implements ICommandRequest{
             throw new IllegalArgumentException("Dear user, the Rover's starting instructions must be their starting horizontal coordinate (number), separated by a space ( ), their starting vertical coordinate (number), separated by a space ( _) and then their cardinal point (alphabet) which they are facing (only use the first letter of the direction).");
         }
     }
-
-    public CommandRequest(String terrainSurfaceArea, String roverStartingInstructions, String commands) {
+    
+    private void setCommands(String commands){
         if(!commands.matches("[a-zA-Z]+"))
             throw new IllegalArgumentException("Dear user, the commands given to the rover must be alphabets and not contain spaces between them.");
         //Convert string of commands into an array of commands
