@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import za.ac.vut.marsroverchallenge.exception.model.IllegalBoundValueException;
+
 /**
  *
  * @author 20180172
@@ -18,7 +20,7 @@ public class TerrainTest {
     public void setUp() {
     }
 
-    @Test(expected = IllegalHorizontalBoundValueException.class)
+    @Test(expected = IllegalBoundValueException.class)
     public void test_constructor_ThrowsAnIllegalHorizontalBoundValueException_WhenTheTerrainSurfaceHorizontalBoundIsLessThanOne() throws Exception{
         //Terrain's surface horizontal bound
         int horizontalBound = 0;
@@ -28,7 +30,7 @@ public class TerrainTest {
         Terrain terrain = new Terrain(horizontalBound, verticalBound);
     }
     
-    @Test(expected = IllegalVerticalBoundValueException.class)
+    @Test(expected = IllegalBoundValueException.class)
     public void test_constructor_ThrowsAnIllegalVerticalBoundValueException_WhenTheTerrainSurfaceVerticalBoundIsLessThanOne() throws Exception {
         //Terrain's surface horizontal bound
         int horizontalBound = 1;

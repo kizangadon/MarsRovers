@@ -9,6 +9,6 @@ package za.ac.vut.marsroverchallenge.exception.model;
  *
  * @author 20180172
  */
-public class IllegalBoundValueException extends Exception{
+public class PointOutOfTerrainSurfaceAreaBoundsException extends Exception{
     
 }
