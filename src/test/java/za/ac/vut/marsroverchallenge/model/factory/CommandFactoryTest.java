@@ -42,7 +42,7 @@ public class CommandFactoryTest {
     }
     
     @Test
-    public void createCommands_returnsTheCorrectCommandThatWasRequested() throws Exception {
+    public void createCommands_returnsAListOfTheCorrectCommandThatWasRequested() throws Exception {
         //Arrange
         String commands = "M";
         List<Command> commandList = new ArrayList<>();
@@ -61,6 +61,35 @@ public class CommandFactoryTest {
         assertEquals(commandList, CommandFactory.createCommands(commands));
         //Arrange
         commands = "RLM";
+        commandList = new ArrayList<>();
+        
+        commandList.add(Command.ROTATE_NINETY_DEGREES_RIGHT);
+        commandList.add(Command.ROTATE_NINETY_DEGREES_LEFT);
+        commandList.add(Command.MOVE_ONE_SPACE_FORWARD);
+        //Assert
+        assertEquals(commandList, CommandFactory.createCommands(commands));
+    }
+    
+    @Test
+    public void createCommands_returnsAListOfTheCorrectCommandThatWasRequested_irrespectiveOfTheAlphabetsCase() throws Exception {
+        //Arrange
+        String commands = "m";
+        List<Command> commandList = new ArrayList<>();
+        
+        commandList.add(Command.MOVE_ONE_SPACE_FORWARD);
+        //Assert
+        assertEquals(commandList, CommandFactory.createCommands(commands));
+        //Arrange
+        commands = "MlM";
+        commandList = new ArrayList<>();
+        
+        commandList.add(Command.MOVE_ONE_SPACE_FORWARD);
+        commandList.add(Command.ROTATE_NINETY_DEGREES_LEFT);
+        commandList.add(Command.MOVE_ONE_SPACE_FORWARD);
+        //Assert
+        assertEquals(commandList, CommandFactory.createCommands(commands));
+        //Arrange
+        commands = "Rlm";
         commandList = new ArrayList<>();
         
         commandList.add(Command.ROTATE_NINETY_DEGREES_RIGHT);

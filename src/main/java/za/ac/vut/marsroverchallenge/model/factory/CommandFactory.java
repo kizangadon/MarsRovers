@@ -37,8 +37,9 @@ public class CommandFactory {
     }
 
     public static List<Command> createCommands(String commands) throws IllegalCommandValueException {
-
         List<Command> commandList = new ArrayList<>();
+        
+        commands = commands.toUpperCase();
 
         for (char command : commands.toCharArray()) {
             commandList.add(createCommand(command));
