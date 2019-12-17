@@ -63,6 +63,6 @@ You will need Git installed on your system, then:
 	
 ## Challenges
 1. What happens when a rover is given a command to go to a block that's not within the landing terain bounds
-  - eg. The zone (Mar's surface) has dimensions of (2, 2) and when the Rover is on block (2, 2) whilst facing East (E) or North (N), they are given a command to move?
-			Are there specific exceptions to be thrown or can I create my own?
-1. What if the user (giving input to the program), inputs cordinates of (0, 0) or negative numbers, are there predefined behaviors of how this system is to behave or can I create my own exceptions?
+   1. eg. The zone (Mar's surface) has dimensions of (2, 2) and when the Rover is on block (2, 2) whilst facing East (E) or North (N), they are given a command to move?
+2. What if the user (giving input to the program), inputs cordinates of (0, 0) or negative numbers, are there predefined behaviors of how this system is to behave or can I create my own exceptions?
+3. Are there specific exceptions to be thrown or can I create my own?
