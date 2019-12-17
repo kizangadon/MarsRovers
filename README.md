@@ -9,6 +9,8 @@
 2. The project was created using :
    1. Java 8 API, so your system will require the Java 8 JDK.
    2. Maven version: 3.0.5.
+   3. JUnit 4.
+   4. Mockito.
 ### Installation
 You will need Git installed on your system, then:
 1. Open the command prompt, then locate a working directory where you want to download the project.
@@ -57,9 +59,10 @@ You will need Git installed on your system, then:
 2. How to ensure code correctness?
    1. I plan to ensure code correctness by build a test-driven solution, using good object-oriented programming principles. 
    2. The solution will use function testing on two levels, unit-testing and integeration testing. 
-   3. Individual classes will be unit tested whilst components will be integerated using the controller/mediator. 
-   4. SOLID principles will be used in this project. Every class that communicates with another class, will communicate with it's interface instead of that concrete class (Dependency Inversion). 
-   5. Factories will help the instantiation of certain complex classes.
+   3. The xUnit platform that I have selected for this project is JUnit for unit testing and Mockito for mocking when needed.
+   4. Individual classes will be unit tested whilst components will be integerated using the controller/mediator. 
+   5. SOLID principles will be used in this project. Every class that communicates with another class, will communicate with it's interface instead of that concrete class (Dependency Inversion). 
+   6. Factories will help the instantiation of certain complex classes.
 	
 ## Challenges
 1. What happens when a rover is given a command to go to a block that's not within the landing terain bounds
