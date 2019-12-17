@@ -48,7 +48,7 @@ You will need Git installed on your system, then:
    3. The Rover understands cardinal points/directions and we've been given the directions which they can face at any time: East (E), West (W), North (N) or South (S). 
    4. The Rover understands three commands which are M, R, L and with these commands is how the rover will navigate the identified terrain. 
    5. One of the constraints is that you can only send a Rover a single list of commands at any given time. Due to time constraints, I used the CRC Cards technique to identify what objects are going to be needed in my solution. 
-   6. I identified that we will need a terrain, the area which are Rover will explore, the rover object was the give away here, as this is the sole owner of this system. 
+   6. I identified that we will need a terrain, the area which a Rover will explore, the rover object was the give away here, as this is the sole owner of this system. 
    7. I identified that we will need some way of representing a command so I made it an object as it holds information that the Rover will use to act. 
    8. I identifed a CoordinatePoint as a specific point on the terrain's surface area and I would like it represented as we will use this to communicate with the Rover of where they are right now and where to move. 
    9. I identified a CardinalPoint as an object that the Rover is aware off, initial I wanted to make it a property but then realised that there are more than one and are fixed, so we can make it an enumeration of some sort. 
